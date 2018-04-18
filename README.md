@@ -32,11 +32,11 @@ A multi-function mobile phone scrolling selector, support single to multi-select
 
 ## Preview
 
-#### Use mobile phone scan code to preview: 
-<img src="https://github.com/onlyhom/img-folder/blob/master/png/ms_code_url_480.png?raw=true" width="230">
+#### Use mobile phone scan code to preview:
+<img src="https://github.com/onlyhom/img-folder/blob/master/png/ms_code_url_480.png_io.png?raw=true" width="230">
 
-#### Gif preview:   
-![Image text](http://p1.bqimg.com/4851/0e072a9fae72e0a0.gif)
+#### Gif preview:
+![Image text](https://github.com/onlyhom/img-folder/blob/master/gif/ms_preview_all.gif?raw=true)
 
 
 ## Installation
@@ -69,8 +69,8 @@ import MobileSelect from 'mobile-select'
 
 <script type="text/javascript">
 var mobileSelect1 = new MobileSelect({
-    trigger: '#day', 
-    title: '单项选择',  
+    trigger: '#day',
+    title: '单项选择',
     wheels: [
                 {data:['周日','周一','周二','周三','周四','周五','周六']}
             ],
@@ -108,12 +108,12 @@ var mobileSelect2 = new MobileSelect({
             ],
     callback:function(indexArr, data){
         console.log(data); //Returns the selected json data
-    } 
+    }
 });
 </script>
 ```
 ##### Example：
-![Image text](http://p1.bqimg.com/567571/d4e4bac29a9c6e87.gif)
+![Image text](https://github.com/onlyhom/img-folder/blob/master/gif/ms_no_cascade.gif?raw=true)
 
 
 #### ③Json format - Cascade
@@ -147,7 +147,7 @@ var mobileSelect2 = new MobileSelect({
       position:[0,1],
       callback:function(indexArr, data){
           console.log(data); //Returns the selected json data
-      } 
+      }
   });
   </script>
 ```
@@ -174,7 +174,7 @@ var mobileSelect2 = new MobileSelect({
                     {data:[
                         {id:'1',value:'choose distance'},
                     ]}
-                ],        
+                ],
         callback:function(indexArr, data){
             console.log(data);
         }
@@ -200,7 +200,7 @@ var mobileSelect2 = new MobileSelect({
             //     {id:'2',value:'300 metres'},
             //     {id:'3',value:'400 metres'}
             // ]
- 
+
             mobileSelect4.updateWheel(0, res.data.area); //Update the 0th wheel
             mobileSelect4.updateWheel(1, res.data.distance); //Update the 1th wheel
         }
@@ -229,7 +229,7 @@ var mobileSelect2 = new MobileSelect({
                             ]
                         }
                     ]}
-                ],        
+                ],
         callback:function(indexArr, data){
             console.log(data);
         }
@@ -257,7 +257,7 @@ var mobileSelect2 = new MobileSelect({
 </script>
 ```
 
-#### ⑤How to use in vue-cli   
+#### ⑤How to use in vue-cli
 
 ```
 npm install mobile-select -D
@@ -291,7 +291,7 @@ npm install mobile-select -D
 ```
 
 
-#### ⑥Json format - Data field mapping    
+#### ⑥Json format - Data field mapping
 ```html
 <div id="trigger6"></div>
 
@@ -328,7 +328,7 @@ npm install mobile-select -D
             id:'id',
             value: 'title',
             childs :'children'
-        },         
+        },
         callback:function(indexArr, data){
             console.log(data);
         }
@@ -345,14 +345,16 @@ npm install mobile-select -D
 
 |Option|Default|Type|Description |
 | ------ |------|-----|-----|
-|trigger|Required parameter No default value|String| The id/class/tag of the trigger object |
-|wheels|Required parameter No default value|Array|The data displayed on the wheel|
+|trigger|Required parameter. No default value|String| The id/class/tag of the trigger object |
+|wheels|Required parameter. No default value|Array|The data displayed on the wheel|
+|callback|function(indexArr, data){}|function | A callback function after successful selected, return parameter (indexArr, data) |
+|transitionEnd|function(indexArr, data){}|function|A callback function that after each gesture sliding, return parameter (indexArr, data)|
+|cancel|function(indexArr, data){}|function|A callback function after cancel selected, return last successful selected parameter (indexArr, data)|
+|onShow|function(e){}|function | A callback when the window is show, return object itself as parameter |
+|onHide|function(e){}|function | A callback when the window is hidden, return object itself as parameter|
 |title|`''`|String|Component title|
 |position|[0,0,0,…]|Array|Initialize positioning|
 |connector|`' '`|String| When there are multiple wheels, set the connection to connect multiple values, the default value is a space |
-| callback|function(indexArr, data){}|function | Select the callback function triggered after successful, return parameter (indexArr, data)|
-|cancel|function(indexArr, data){}|function | Click the Cancel button to trigger the callback function and return to the last parameter (indexArr, data)|
-|transitionEnd|function(indexArr, data){}|function|A callback function that after each gesture sliding, return parameter (indexArr, data)|
 |ensureBtnText|`'确认'`|String| The text content of comfirm button |
 |cancelBtnText|`'取消'`|String| The text content of cancel button |
 |ensureBtnColor|`'#1e83d3'`|String| The text color of the comfirm button|
@@ -361,22 +363,24 @@ npm install mobile-select -D
 |titleBgColor|`'#ffffff'`|String| The background color of the component title |
 |textColor|`'#000000'`|String| The text color of the wheels |
 |bgColor|`'#ffffff'`|String| The Wheels background color |
+|maskOpacity|`0.7`| Number | Mask opacity |
 |keyMap|`{id:'id', value:'value', childs:'childs'`}|Object| Field name mapping, applies to field names that do not match id, value, childs |
 |triggerDisplayData|`true`|Boolean| When the click is confirmed, the trigger's innerHtml becomes the selected data.<br>( If there are other elements in the trigger, you can set it to false. If you need to display data elsewhere, you can use the data returned by callback to stitch yourself )|
 
 
 #### Tips: The meaning of the parameters returned in the callback function is as follows
- - **indexArr** is the currently selected index array, such as[0,0,1] 
+ - **indexArr** is the currently selected index array, such as[0,0,1]
  - **data** is the currently selected json array, such as[{id:'1',value:'hello'},{id:'2',value:'world'}]
 
 ## Functions：
 |Function|Arguments| Description|
 | ------ |------| -----|
+|show()| no-argument | show the compontent  |
+|hide()| no-argument | hide the compontent  |
 |setTitle()| string |Set the title of the component|
 |locatePosition()|sliderIndex, posIndex|Pass the position array parameter, relocate the position of the wheel|
 |updateWheel()| sliderIndex, data | Re-render the specified wheel |
 |updateWheels()| data | Re-render the all wheel(Only used in cascading data forma) |
-|show()| no-argument | show the compontent  |
 |getValue()| no-argument | Gets the value selected by the component |
 
 
@@ -384,12 +388,20 @@ npm install mobile-select -D
  - SliderIndex represents the index of the wheel to be modified
  - PosIndex represents the location index
  
-#### Demo of use the function ：  
+ 
+### The second time how to reshow the selected position?
+There is an indexArr parameter in the callback callback function, which is an array that records the currently selected location:     
+After converting this array into a string, you can save it in a hidden field or otherwise, and pass it to the background.     
+Next time you open the page,     
+When the MobileSelect is instantiated, it reads the string, turns it into an array, passes it to position, and completes the initialization position.     
+
+
+#### Demo of use the function ：
 ```html
 <div id="day"></div>
 
 var mySelect = new MobileSelect({
-    trigger: '#day', 
+    trigger: '#day',
     wheels: [
                 {data:['周日','周一','周二','周三','周四','周五','周六']},
                 {data:['08:00','09:00','10:00','11:00','12:00','13:00','14:00']}
@@ -400,7 +412,7 @@ var mySelect = new MobileSelect({
 //----------------------------------------------
 //After the basic instantiated, use the functions
 
-mySelect.setTitle('啦啦啦(๑•̀ㅁ•́ฅ)'); 
+mySelect.setTitle('啦啦啦(๑•̀ㅁ•́ฅ)');
 // Set the title of the component
 
 mySelect.updateWheel(0,['sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']);
@@ -409,8 +421,8 @@ mySelect.updateWheel(0,['sunday','Monday','Tuesday','Wednesday','Thursday','Frid
 mySelect.locatePosition(1,0);
 // Reposition the position of the first wheel and change the 0th data of the first wheel to the current selection.
 // (The first wheel is the right wheel, the left side of the wheel is the first 0)
-```   
-Base example → Function after operation  
+```
+Base example → Function after operation
 
 ![基础实例](https://github.com/onlyhom/img-folder/blob/master/QQscreenshot/before20170306234037.png?raw=true)
 ![功能函数操作后](https://github.com/onlyhom/img-folder/blob/master/QQscreenshot/after-20170306233954.png?raw=true)
@@ -424,57 +436,74 @@ Use the transitionEnd (), callback (), updateWheel (), locatePosition () functio
 ![Image text](https://github.com/onlyhom/img-folder/blob/master/gif/limit%E5%87%BD%E6%95%B0.gif?raw=true)
 
 
-## Logs  
-### 2017-04-20[update]    
-As the input tag in the iphone, the cursor will flashing.    
-As well as the input tag open in the iphone6P / iphone7P chrome will appear offset phenomenon.    
-So do not use the input tag, instead by the ordinary div trigger.    
-The value selected will be written in the div trigger‘s innerHTML.    
+## Logs
+### 2017-04-20[update]
+As the input tag in the iphone, the cursor will flashing.
+As well as the input tag open in the iphone6P / iphone7P chrome will appear offset phenomenon.
+So do not use the input tag, instead by the ordinary div trigger.
+The value selected will be written in the div trigger‘s innerHTML.
 It is recommended to use the callback (indexArr, data) function to get the selected value.
 
 ### 2017-07-27[bug fixed]
-Repair the issues raised by [li362692680]:       
-Cascade selection can not initially locate the secondary selection box.    
-At the same time repair the init function of the entry array parameter length is less than the number of wheels can not move the problem.        
+Repair the issues raised by [li362692680]:
+Cascade selection can not initially locate the secondary selection box.
+At the same time repair the init function of the entry array parameter length is less than the number of wheels can not move the problem.
 
 
-### 2017-07-30[bug fixed + update]       
-Repair the issues raised by [leohgbs]:       
-1. The update does not take into account the problem that the data is json.       
-2. After the update, the cached data is not updated, resulting in a callback data source error.       
+### 2017-07-30[bug fixed + update]
+Repair the issues raised by [leohgbs]:
+1. The update does not take into account the problem that the data is json.
+2. After the update, the cached data is not updated, resulting in a callback data source error.
 
-Change the variable name: jsonData → cascadeJsonData       
-Change method name: updateWheels() → reRenderWheels()       
-The updateWheel() method does not change.       
-Add new API: updateWheels(data) is used to update the entire data source in cascading data format.       
-
-
-### 2017-08-15[update]    
-Repair in cascade state, single click failed.      
-Delete the comment after the brace in the js file(In the php environment there will be js code failure situation).    
-Fix ios potential bug.  
-Add API: show()    
-Add API: getValue()    
-Add option style options(Modify the connector / button text / button color / background color and so on)：    
-connector    
-ensureBtnText    
-ensureBtnColor    
-cancelBtnText     
-cancelBtnColor    
-titleColor    
-titleBgColor    
-bgColor    
-textColor    
-Supports color formats such as #ff0000 rgba(0,255,255,0.5) orange.    
+Change the variable name: jsonData → cascadeJsonData
+Change method name: updateWheels() → reRenderWheels()
+The updateWheel() method does not change.
+Add new API: updateWheels(data) is used to update the entire data source in cascading data format.
 
 
-### 2017-09-07[update]    
-Add keyMap function      
-update README     
+### 2017-08-15[update]
+Repair in cascade state, single click failed.
+Delete the comment after the brace in the js file(In the php environment there will be js code failure situation).
+Fix ios potential bug.
+Add API: show()
+Add API: getValue()
+Add option style options(Modify the connector / button text / button color / background color and so on)：
+connector
+ensureBtnText
+ensureBtnColor
+cancelBtnText
+cancelBtnColor
+titleColor
+titleBgColor
+bgColor
+textColor
+Supports color formats such as #ff0000 rgba(0,255,255,0.5) orange.
 
-### 2017-10-17[update]    
-Add cancel callback 
 
+### 2017-09-07[update]
+Add keyMap function
+Update README
+
+### 2017-10-17[update]
+Add cancel callback
+
+### 2017-12-12[update]
+Remove cancel callback
+Thanks for [ngdly]:
+Add onshow callback
+Add onhide callback
+Add show function
+Add hide function
+
+### 2018-01-28[update]
+Thanks for [aaalog]:
+Modify the method for listening to click events.
+To fix the click event which will triggered twice the transitionEnd funtion:
+Remove addListenerLi(), singleClick() internal methods,
+Click judgment directly in the touchend event.
+
+### 2018-01-29[update]    
+Add maskOpacity option    
 
 ## License
 
